@@ -1,5 +1,6 @@
 using System;
 using nothinbutdotnetprep.infrastructure;
+using nothinbutdotnetprep.infrastructure.searching;
 
 namespace nothinbutdotnetprep.collections
 {
@@ -35,7 +36,7 @@ namespace nothinbutdotnetprep.collections
 
         public static Criteria<Movie> is_published_by(ProductionStudio studio)
         {
-            return new IsPublishedBy(studio);
+            return Where<Movie>.has_a(x => x.production_studio).equal_to(studio);
         }
 
         public static Criteria<Movie> is_not_published_by_pixar()

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using nothinbutdotnetprep.infrastructure;
 
@@ -28,35 +27,6 @@ namespace nothinbutdotnetprep.collections
         bool already_contains(Movie movie)
         {
             return movies.Contains(movie);
-        }
-
-
-        public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
-        {
-            return all_movies_matching(movie => movie.production_studio == ProductionStudio.Disney ||
-                movie.production_studio == ProductionStudio.Pixar);
-        }
-
-        public IEnumerable<Movie> all_kid_movies()
-        {
-            return all_movies_matching(movie => movie.genre == Genre.kids);
-        }
-
-        public IEnumerable<Movie> all_action_movies()
-        {
-            return all_movies_matching(movie => movie.genre == Genre.action);
-        }
-
-        public IEnumerable<Movie> all_movies_published_after(int year)
-        {
-            return all_movies_matching(movie => movie.date_published.Year > year);
-        }
-
-        public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
-        {
-            return
-                all_movies_matching(
-                    movie => movie.date_published.Year >= startingYear && movie.date_published.Year <= endingYear);
         }
 
         public IEnumerable<Movie> sort_all_movies_by_title_ascending()
@@ -132,11 +102,6 @@ namespace nothinbutdotnetprep.collections
         public bool is_a_kids_movie(Movie movie)
         {
             return movie.genre == Genre.kids;
-        }
-
-        IEnumerable<Movie> all_movies_matching(Predicate<Movie> explicit_criteria)
-        {
-            return movies.all_items_matching(new AnonymousCriteria<Movie>(explicit_criteria));
         }
     }
 }

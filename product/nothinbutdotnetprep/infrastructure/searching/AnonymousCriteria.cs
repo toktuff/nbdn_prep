@@ -1,6 +1,6 @@
 using System;
 
-namespace nothinbutdotnetprep.infrastructure
+namespace nothinbutdotnetprep.infrastructure.searching
 {
 
     public class AnonymousCriteria<T> : Criteria<T>

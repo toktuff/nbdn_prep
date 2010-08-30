@@ -5,6 +5,7 @@ using Machine.Specifications;
 using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetprep.collections;
+using nothinbutdotnetprep.infrastructure.searching;
 using nothinbutdotnetprep.tests.utilIty;
 using nothinbutdotnetprep.infrastructure;
 
@@ -227,7 +228,7 @@ namespace nothinbutdotnetprep.specs
             {
                 var criteria = Where<Movie>
                     .has_a(x => x.production_studio)
-                    .not_equal_to(ProductionStudio.Pixar);
+                    .not.equal_to(ProductionStudio.Pixar);
 
                 var results = sut.all_movies().all_items_matching(criteria);
 

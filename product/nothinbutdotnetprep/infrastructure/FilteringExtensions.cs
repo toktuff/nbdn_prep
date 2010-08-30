@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using nothinbutdotnetprep.infrastructure.ranges;
+using nothinbutdotnetprep.infrastructure.searching;
 
 namespace nothinbutdotnetprep.infrastructure
 {
@@ -8,26 +10,27 @@ namespace nothinbutdotnetprep.infrastructure
         public static Criteria<ItemToFilter> equal_to<ItemToFilter, PropertyType>(
             this FilteringEntryPoint<ItemToFilter, PropertyType> entry_point, PropertyType value) 
         {
-            return new AnonymousCriteria<ItemToFilter>(item => entry_point.accessor(item).Equals(value));
+            return equal_to_any(entry_point, value);
         }
 
         public static Criteria<ItemToFilter> equal_to_any<ItemToFilter, PropertyType>(
             this FilteringEntryPoint<ItemToFilter, PropertyType> entry_point, params PropertyType[] values) 
         {
-            return
-                new AnonymousCriteria<ItemToFilter>(
-                    filter => new List<PropertyType>(values).Contains(entry_point.accessor(filter)));
+            return new PropertyCriteria<ItemToFilter, PropertyType>(entry_point.accessor,
+                                                                    new IsEqualToAny<PropertyType>());
         }
 
-        public static Criteria<ItemToFilter> not_equal_to<ItemToFilter,PropertyType>(this FilteringEntryPoint<ItemToFilter,PropertyType> entry_point,PropertyType value_to_equal)
+
+
+        public static Criteria<ItemToFilter> falls_in<ItemToFilter,PropertyType>(this FilteringEntryPoint<ItemToFilter,PropertyType> entry_point,Range<PropertyType> value) where PropertyType: IComparable<PropertyType>, IComparer<PropertyType>
         {
-            return new NotCriteria<ItemToFilter>(equal_to(entry_point, value_to_equal));
+            return new PropertyCriteria<ItemToFilter, PropertyType>(entry_point.accessor,
+                                                                    new FallsInRange<PropertyType>(value));
         }
-
-
         public static Criteria<ItemToFilter> greater_than<ItemToFilter,PropertyType>(this FilteringEntryPoint<ItemToFilter,PropertyType> entry_point,PropertyType value) where PropertyType: IComparable<PropertyType>
         {
-            return new AnonymousCriteria<ItemToFilter>(filter => entry_point.accessor(filter).CompareTo(value) > 0);
+            return new PropertyCriteria<ItemToFilter, PropertyType>(entry_point.accessor,
+                                                                    new IsGreaterThan<PropertyType>(value));
         }
 
         public static Criteria<ItemToFilter> less_than<ItemToFilter,PropertyType>(this FilteringEntryPoint<ItemToFilter,PropertyType> entry_point,PropertyType value) where PropertyType : IComparable<PropertyType>

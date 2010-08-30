@@ -1,4 +1,4 @@
-﻿namespace nothinbutdotnetprep.infrastructure
+﻿namespace nothinbutdotnetprep.infrastructure.searching
 {
     public abstract class BinaryCriteria<T> : Criteria<T>
     {

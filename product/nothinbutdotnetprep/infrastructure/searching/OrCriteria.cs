@@ -1,4 +1,4 @@
-namespace nothinbutdotnetprep.infrastructure
+namespace nothinbutdotnetprep.infrastructure.searching
 {
     public class OrCriteria<T> : BinaryCriteria<T>
     {

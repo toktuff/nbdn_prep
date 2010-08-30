@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using nothinbutdotnetprep.collections;
+using nothinbutdotnetprep.infrastructure.searching;
 
 namespace nothinbutdotnetprep.infrastructure
 {

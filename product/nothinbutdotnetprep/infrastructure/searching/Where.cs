@@ -1,6 +1,6 @@
 using System;
 
-namespace nothinbutdotnetprep.infrastructure
+namespace nothinbutdotnetprep.infrastructure.searching
 {
     public static class Where<ItemToFilter>
     {
