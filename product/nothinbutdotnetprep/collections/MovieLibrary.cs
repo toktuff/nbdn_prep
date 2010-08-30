@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using nothinbutdotnetprep.infrastructure;
 
@@ -31,66 +32,41 @@ namespace nothinbutdotnetprep.collections
 
         public IEnumerable<Movie> all_movies_published_by_pixar()
         {
-            foreach (var movie in movies)
-            {
-                if (movie.production_studio == ProductionStudio.Pixar)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.production_studio == ProductionStudio.Pixar);
         }
 
         public IEnumerable<Movie> all_movies_not_published_by_pixar()
         {
-            foreach (var movie in movies)
-            {
-                if (movie.production_studio != ProductionStudio.Pixar)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.production_studio != ProductionStudio.Pixar);
         }
 
         public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
         {
-            foreach (var movie in movies)
-            {
-                if (movie.production_studio == ProductionStudio.Disney ||
-                    movie.production_studio == ProductionStudio.Pixar)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.production_studio == ProductionStudio.Disney ||
+                                                movie.production_studio == ProductionStudio.Pixar);
         }
 
         public IEnumerable<Movie> all_kid_movies()
         {
-            foreach (var movie in movies)
-            {
-                if (movie.genre == Genre.kids)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.genre == Genre.kids);
         }
+
 
         public IEnumerable<Movie> all_action_movies()
         {
-            foreach (var movie in movies)
-            {
-                if (movie.genre == Genre.action)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.genre == Genre.action);
         }
 
         public IEnumerable<Movie> all_movies_published_after(int year)
         {
-            foreach (var movie in movies)
-            {
-                if (movie.date_published.Year > year)
-                    yield return movie;
-            }
+            return get_movies_matching(movie => movie.date_published.Year > year);
         }
 
         public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
         {
-            foreach (var movie in movies)
-            {
-                if (movie.date_published.Year >= startingYear && movie.date_published.Year <= endingYear)
-                    yield return movie;
-            }
+            return
+                get_movies_matching(
+                    movie => movie.date_published.Year >= startingYear && movie.date_published.Year <= endingYear);
         }
 
         public IEnumerable<Movie> sort_all_movies_by_title_ascending()
@@ -162,5 +138,16 @@ namespace nothinbutdotnetprep.collections
 
             return listOfMovies;
         }
+
+        public delegate bool MatchDelegate<T>(T movie);
+        IEnumerable<Movie> get_movies_matching(MatchDelegate<Movie> predicate)
+        {
+            foreach (var movie in movies)
+            {
+                if (predicate(movie))
+                    yield return movie;
+            }
+        }
+
     }
 }
