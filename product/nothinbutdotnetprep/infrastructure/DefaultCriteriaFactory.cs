@@ -17,6 +17,11 @@ namespace nothinbutdotnetprep.infrastructure
             return new AnonymousCriteria<ItemToFilter>(item => property_accessor(item).Equals(value_to_equal));
         }
 
+        public Criteria<ItemToFilter> not_equal_to(PropertyType value_to_equal)
+        {
+            return new NotCriteria<ItemToFilter>(equal_to(value_to_equal));
+        }
+
         public Criteria<ItemToFilter> equal_to_any(params PropertyType[] values)
         {
             return
