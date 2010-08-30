@@ -74,6 +74,8 @@
     <Compile Include="infrastructure\CriteriaFactory.cs" />
     <Compile Include="infrastructure\DefaultCriteriaFactory.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
+    <Compile Include="infrastructure\FilteringEntryPoint.cs" />
+    <Compile Include="infrastructure\FilteringExtensions.cs" />
     <Compile Include="infrastructure\NotCriteria.cs" />
     <Compile Include="infrastructure\OrCriteria.cs" />
     <Compile Include="infrastructure\Where.cs" />
