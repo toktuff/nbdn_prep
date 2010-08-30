@@ -78,6 +78,24 @@ namespace nothinbutdotnetprep.specs
         }
 
         [Subject(typeof(MovieLibrary))]
+        public class when_iterating : movie_library_concern
+        {
+            static IEnumerable<Movie> results;
+
+            Establish c = () =>
+            {
+                Enumerable.Range(1,100).each(x => movie_collection.Add(new Movie()));
+            };
+
+            Because b = () =>
+                results = sut.all_movies();
+
+            It should_iterate = () =>
+            {
+            };
+        }
+
+        [Subject(typeof(MovieLibrary))]
         public class when_asked_for_all_of_the_movies : movie_library_concern
         {
             static Movie first_movie;

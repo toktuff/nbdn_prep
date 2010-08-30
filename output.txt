@@ -1,0 +1,160 @@
+
+Specs in nothinbutdotnetprep.specs:
+
+MovieLibrary, when counting the number of movies
+About to iterate over movies
+I am returning a movie
+I am returning a movie
+¯ should return the number of all movies in the library
+
+MovieLibrary, when iterating
+About to iterate over movies
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+I am returning a movie
+¯ should iterate
+
+MovieLibrary, when asked for all of the movies
+About to iterate over movies
+I am returning a movie
+I am returning a movie
+¯ should receive a set containing each movie in the library
+
+MovieLibrary, when trying to change the set of movies returned by the movie library to a mutable type
+¯ should get an invalid cast exceptionAbout to iterate over movies
+I am returning a movie
+I am returning a movie
+ (FAIL)
+Machine.Specifications.SpecificationException: Should be of type System.RuntimeType but is [null]
+   at Machine.Specifications.ShouldExtensionMethods.ShouldBeOfType(Object actual, Type expected) in c:\Users\jp\repositories\github\machine.specifications\Source\Machine.Specifications\ExtensionMethods.cs:line 183
+   at Machine.Specifications.ShouldExtensionMethods.ShouldBeOfType[T](Object actual) in c:\Users\jp\repositories\github\machine.specifications\Source\Machine.Specifications\ExtensionMethods.cs:line 190
+   at Machine.Specifications.ShouldExtensionMethods.ShouldBeAn[T](Object item) in c:\Users\jp\repositories\github\machine.specifications\Source\Machine.Specifications\ExtensionMethods.cs:line 195
+   at nothinbutdotnetprep.specs.MovieLibrarySpecs.when_trying_to_change_the_set_of_movies_returned_by_the_movie_library_to_a_mutable_type.<.ctor>b__19() in C:\Users\jp\repositories\github\nbdn_prep\product\nothinbutdotnetprep.specs\MovieLibrarySpecs.cs:line 137
+   at Machine.Specifications.Model.Specification.InvokeSpecificationField() in c:\Users\jp\repositories\github\machine.specifications\Source\Machine.Specifications\Model\Specification.cs:line 75
+   at Machine.Specifications.Model.Specification.Verify() in c:\Users\jp\repositories\github\machine.specifications\Source\Machine.Specifications\Model\Specification.cs:line 53
+
+MovieLibrary, when adding a movie to the library
+¯ should store it in the movie collection
+
+MovieLibrary, when adding an existing movie in the collection again
+¯ should not restore the movie in the collection
+
+MovieLibrary, when adding two different copies of the same movie
+¯ should store only 1 copy in the collection
+
+MovieLibrary, when searching for movies
+¯ should be able to find all movies published by pixar
+¯ should be able to find all movies published by pixar or disney
+¯ should be able to find all movies not published by pixar
+¯ should be able to find all movies published after a certain year
+¯ should be able to find all movies published between a certain range of years
+¯ should be able to find all kid movies
+¯ should be able to find all action movies
+
+MovieLibrary, when sorting movies
+¯ should be able to sort all movies by title descending
+¯ should be able to sort all movies by title ascending
+¯ should be able to sort all movies by date published descending
+¯ should be able to sort all movies by date published ascending
+¯ should be able to sort all movies by studio rating and year published
+
+Contexts: 9, Specifications: 19
+  18 passed, 1 failed
+Generic failure occurred, no idea what this is

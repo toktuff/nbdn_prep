@@ -9,13 +9,18 @@ namespace nothinbutdotnetprep.collections
         public Genre genre { get; set; }
         public int rating { get; set; }
         public DateTime date_published { get; set; }
-        
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Movie);
+        }
+
         public bool Equals(Movie other)
         {
-            if (other == null)
-                return false;
+            if (other == null) return false;
 
-            return this.title == other.title;
+            return ReferenceEquals(this,other) || is_equal_to_non_null_instance_of(other); 
+
         }
 
         public override int GetHashCode()
@@ -23,15 +28,9 @@ namespace nothinbutdotnetprep.collections
             return title.GetHashCode();
         }
 
-        public override bool Equals(object obj)
+        bool is_equal_to_non_null_instance_of(Movie other)
         {
-            if (obj == null)
-                return false;
-
-            if (!(obj is Movie))
-                return false;
-
-            return Equals((Movie)obj);
+            return other.title.Equals(this.title);
         }
     }
 }
