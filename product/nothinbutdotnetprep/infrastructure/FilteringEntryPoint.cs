@@ -13,7 +13,7 @@ namespace nothinbutdotnetprep.infrastructure
 
         public NegatingFilterEntryPoint<ItemToFilter, PropertyType> not
         {
-            get { return new NegatingFilterEntryPoint<ItemToFilter, PropertyType>(accessor, this); }
+            get { return new NegatingFilterEntryPoint<ItemToFilter, PropertyType>(this); }
         }
     }
 }
