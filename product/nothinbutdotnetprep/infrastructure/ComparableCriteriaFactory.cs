@@ -1,15 +1,20 @@
 using System;
-using nothinbutdotnetprep.collections;
 
 namespace nothinbutdotnetprep.infrastructure
 {
-    public class ComparableCriteriaFactory<ItemToFilter, PropertyType> where PropertyType : IComparable<PropertyType>
+    public class ComparableCriteriaFactory<ItemToFilter, PropertyType> : CriteriaFactory<ItemToFilter,PropertyType> where PropertyType : IComparable<PropertyType>
     {
         Func<ItemToFilter, PropertyType> accessor;
+        CriteriaFactory<ItemToFilter, PropertyType> basic_factory;
 
-        public ComparableCriteriaFactory(Func<ItemToFilter, PropertyType> property_accessor)
+        public ComparableCriteriaFactory(Func<ItemToFilter, PropertyType> accessor):this(accessor, new DefaultCriteriaFactory<ItemToFilter, PropertyType>(accessor))
+        {
+        }
+
+        public ComparableCriteriaFactory(Func<ItemToFilter, PropertyType> property_accessor,CriteriaFactory<ItemToFilter,PropertyType> basic_factory)
         {
             this.accessor = property_accessor;
+            this.basic_factory = basic_factory;
         }
 
         public Criteria<ItemToFilter> greater_than(PropertyType value)
@@ -24,7 +29,17 @@ namespace nothinbutdotnetprep.infrastructure
 
         public Criteria<ItemToFilter> equal_to(PropertyType value_to_equal)
         {
-            return new AnonymousCriteria<ItemToFilter>(item => accessor(item).Equals(value_to_equal));
+            return basic_factory.equal_to(value_to_equal);
+        }
+
+        public Criteria<ItemToFilter> not_equal_to(PropertyType value_to_equal)
+        {
+            return basic_factory.not_equal_to(value_to_equal);
+        }
+
+        public Criteria<ItemToFilter> equal_to_any(params PropertyType[] values)
+        {
+            return basic_factory.equal_to_any(values);
         }
 
         public Criteria<ItemToFilter> between(PropertyType lowerValue, PropertyType upperValue)
