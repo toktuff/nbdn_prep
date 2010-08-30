@@ -63,8 +63,10 @@
     <Compile Include="collections\MovieLibrary.cs" />
     <Compile Include="collections\ProductionStudio.cs" />
     <Compile Include="collections\ReadonlySetOf.cs" />
+    <Compile Include="infrastructure\NegatingFilteringExtensions.cs" />
     <Compile Include="infrastructure\IsEqualToAny.cs" />
     <Compile Include="infrastructure\IsGreaterThan.cs" />
+    <Compile Include="infrastructure\NegatingFilterEntryPoint.cs" />
     <Compile Include="infrastructure\PropertyCriteria.cs" />
     <Compile Include="infrastructure\ranges\InclusiveRange.cs" />
     <Compile Include="infrastructure\ranges\Range.cs" />
