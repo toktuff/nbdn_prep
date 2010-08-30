@@ -1,21 +1,20 @@
 using System;
-using nothinbutdotnetprep.collections;
 
 namespace nothinbutdotnetprep.infrastructure
 {
-    public static class Where<T>
+    public static class Where<ItemToFilter>
     {
-        public static Func<T, TResult> has_a<TResult>(Func<T, TResult> methodToInvoke)
+        public static Func<ItemToFilter, PropertyType> has_a<PropertyType>(Func<ItemToFilter, PropertyType> property_accessor)
         {
-            return methodToInvoke;
+            return property_accessor;
         }
     }
 
     public static class FuncExtensions
     {
-        public static Criteria<T> equal_to<T,TResult>(this Func<T,TResult> func, TResult value)
+        public static Criteria<ItemToFilter> equal_to<ItemToFilter, PropertyType>(this Func<ItemToFilter, PropertyType> property_accessor, PropertyType value_to_equal)
         {
-            return new EqualToCriteria<T, TResult>(func, value);
+            return new AnonymousCriteria<ItemToFilter>(item => property_accessor(item).Equals(value_to_equal));
         }
     }
 }

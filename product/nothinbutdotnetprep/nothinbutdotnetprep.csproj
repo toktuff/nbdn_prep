@@ -55,7 +55,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="collections\Genre.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="infrastructure\Criteria.cs" />
     <Compile Include="infrastructure\CriteriaExtensions.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
-    <Compile Include="infrastructure\EqualToCriteria.cs" />
     <Compile Include="infrastructure\NotCriteria.cs" />
     <Compile Include="infrastructure\OrCriteria.cs" />
     <Compile Include="infrastructure\Where.cs" />
