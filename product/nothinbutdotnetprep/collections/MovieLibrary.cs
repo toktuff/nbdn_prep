@@ -30,42 +30,32 @@ namespace nothinbutdotnetprep.collections
             return movies.Contains(movie);
         }
 
-        public IEnumerable<Movie> all_movies_published_by_pixar()
-        {
-            return get_movies_matching(movie => movie.production_studio == ProductionStudio.Pixar);
-        }
-
-        public IEnumerable<Movie> all_movies_not_published_by_pixar()
-        {
-            return get_movies_matching(movie => movie.production_studio != ProductionStudio.Pixar);
-        }
 
         public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
         {
-            return get_movies_matching(movie => movie.production_studio == ProductionStudio.Disney ||
-                                                movie.production_studio == ProductionStudio.Pixar);
+            return all_movies_matching(movie => movie.production_studio == ProductionStudio.Disney ||
+                movie.production_studio == ProductionStudio.Pixar);
         }
 
         public IEnumerable<Movie> all_kid_movies()
         {
-            return get_movies_matching(movie => movie.genre == Genre.kids);
+            return all_movies_matching(movie => movie.genre == Genre.kids);
         }
-
 
         public IEnumerable<Movie> all_action_movies()
         {
-            return get_movies_matching(movie => movie.genre == Genre.action);
+            return all_movies_matching(movie => movie.genre == Genre.action);
         }
 
         public IEnumerable<Movie> all_movies_published_after(int year)
         {
-            return get_movies_matching(movie => movie.date_published.Year > year);
+            return all_movies_matching(movie => movie.date_published.Year > year);
         }
 
         public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
         {
             return
-                get_movies_matching(
+                all_movies_matching(
                     movie => movie.date_published.Year >= startingYear && movie.date_published.Year <= endingYear);
         }
 
@@ -139,15 +129,14 @@ namespace nothinbutdotnetprep.collections
             return listOfMovies;
         }
 
-        public delegate bool MatchDelegate<T>(T movie);
-        IEnumerable<Movie> get_movies_matching(MatchDelegate<Movie> predicate)
+        public bool is_a_kids_movie(Movie movie)
         {
-            foreach (var movie in movies)
-            {
-                if (predicate(movie))
-                    yield return movie;
-            }
+            return movie.genre == Genre.kids;
         }
 
+        IEnumerable<Movie> all_movies_matching(Predicate<Movie> explicit_criteria)
+        {
+            return movies.all_items_matching(new AnonymousCriteria<Movie>(explicit_criteria));
+        }
     }
 }
