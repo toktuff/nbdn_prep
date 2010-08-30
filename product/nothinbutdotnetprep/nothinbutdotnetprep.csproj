@@ -70,6 +70,7 @@
     <Compile Include="infrastructure\BinaryCriteria.cs" />
     <Compile Include="infrastructure\Criteria.cs" />
     <Compile Include="infrastructure\CriteriaExtensions.cs" />
+    <Compile Include="infrastructure\CriteriaFactory.cs" />
     <Compile Include="infrastructure\EnumerableExtensions.cs" />
     <Compile Include="infrastructure\NotCriteria.cs" />
     <Compile Include="infrastructure\OrCriteria.cs" />
