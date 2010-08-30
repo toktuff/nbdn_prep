@@ -63,6 +63,7 @@
     <Compile Include="collections\MovieLibrary.cs" />
     <Compile Include="collections\ProductionStudio.cs" />
     <Compile Include="collections\ReadonlySetOf.cs" />
+    <Compile Include="collections\TitleComparer.cs" />
     <Compile Include="infrastructure\NegatingFilteringExtensions.cs" />
     <Compile Include="infrastructure\IsEqualToAny.cs" />
     <Compile Include="infrastructure\IsGreaterThan.cs" />
