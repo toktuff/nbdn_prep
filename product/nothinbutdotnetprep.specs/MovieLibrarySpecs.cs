@@ -6,6 +6,7 @@ using Machine.Specifications.DevelopWithPassion.Extensions;
 using Machine.Specifications.DevelopWithPassion.Rhino;
 using nothinbutdotnetprep.collections;
 using nothinbutdotnetprep.infrastructure.searching;
+using nothinbutdotnetprep.infrastructure.sorting;
 using nothinbutdotnetprep.tests.utilIty;
 using nothinbutdotnetprep.infrastructure;
 
