@@ -19,11 +19,8 @@ namespace nothinbutdotnetprep.infrastructure.sorting
 
         public ComparerBuilder<T> then_by<PropertyType>(Func<T, PropertyType> func) where PropertyType : IComparable<PropertyType>
         {
-            var result = new ChainedComparer<T>(this.current_comparer,
-                                                new PropertyComparer<T, PropertyType>(func,
-                                                                                      new ComparableComparer
-                                                                                          <PropertyType>()));
-            this.current_comparer = result;
+            var second_criteria = new PropertyComparer<T, PropertyType>(func, new ComparableComparer<PropertyType>());
+            current_comparer = new ChainedComparer<T>(current_comparer, second_criteria);
             return this;
         }
 
