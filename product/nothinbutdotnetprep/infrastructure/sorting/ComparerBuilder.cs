@@ -26,5 +26,11 @@ namespace nothinbutdotnetprep.infrastructure.sorting
             this.current_comparer = result;
             return this;
         }
+
+        public ComparerBuilder<T> reverse()
+        {
+            current_comparer = new ReverseComparer<T>(current_comparer);
+            return this;
+        }
     }
 }
